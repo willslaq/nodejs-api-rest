@@ -4,6 +4,13 @@ import { randomUUID } from 'node:crypto'
 import { knex } from '../database'
 import { checkSessionIdExists } from '../middleware/check-session-id-exists'
 
+// Testes:
+// Unitários: uma única unidade da aplicação
+// Integração: comunicação entre as unidades da aplicação
+// e2e: simulam um usuário operando na aplicação
+
+// Pirâmide de testes: (Criação, Leitura, Atualização, Remocão)
+
 export async function transactionsRoutes(app: FastifyInstance) {
   app.get(
     '/',
