@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {
   beforeAll,
   afterAll,
@@ -51,6 +50,10 @@ describe("Transactions routes", () => {
 
     const cookies = createTransactionResponse.get("Set-Cookie");
 
+    if (!cookies) {
+      throw new Error("No cookies found");
+    }
+
     const listTransactionsResponse = await request(app.server)
       .get("/transactions")
       .set("Cookie", cookies)
@@ -74,6 +77,10 @@ describe("Transactions routes", () => {
       });
 
     const cookies = createTransactionResponse.get("Set-Cookie");
+
+    if (!cookies) {
+      throw new Error("No cookies found");
+    }
 
     const listTransactionsResponse = await request(app.server)
       .get("/transactions")
@@ -102,6 +109,10 @@ describe("Transactions routes", () => {
       });
 
     const cookies = createTransactionResponse.get("Set-Cookie");
+
+    if (!cookies) {
+      throw new Error("No cookies found");
+    }
 
     await request(app.server)
       .post("/transactions")
